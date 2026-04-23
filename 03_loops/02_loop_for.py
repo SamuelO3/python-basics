@@ -1,7 +1,60 @@
 import os
-from typing import Iterable
 
 os.system("cls")
+
+
+print("\nBucle for:")
+
+# Iterar una lista
+frutas = ["manzana", "pera", "mandarina"]
+for fruta in frutas:
+    print(fruta)
+
+# Iterar sobre cualquier cosa que sea iterable
+cadena = "midudev"
+for caracter in cadena:
+    print(caracter)
+
+# enumerate()
+frutas = ["manzana", "pera", "mandarina"]
+for idx, value in enumerate(frutas):
+    print(f"El índice es {idx} y la fruta es {value}")
+
+# bucles anidados
+letras = ["A", "B", "C"]
+numeros = [1, 2, 3]
+
+for letra in letras:
+    for numero in numeros:
+        print(f"{letra}{numero}")
+
+
+# break
+print("\nbreak:")
+animales = ["perro", "gato", "raton", "loro", "pez", "canario"]
+for idx, animal in enumerate(animales):
+    print(animal)
+    if animal == "loro":
+        print(f"El loro está escondido en el índice {idx}")
+    break
+
+# continue
+print("\ncontinue:")
+animales = ["perro", "gato", "raton", "loro", "pez", "canario"]
+for idx, animal in enumerate(animales):
+    if animal == "loro":
+        continue
+    print(animal)
+
+# Comprensión de listas (list comprehension)
+animales = ["perro", "gato", "raton", "loro", "pez", "canario"]
+animales_mayus = [animal.upper() for animal in animales]
+print(animales_mayus)
+
+# Muestra los números pares de una lista
+pares = [num for num in [1, 2, 3, 4, 5, 6] if num % 2 == 0]
+print(pares)
+
 
 ###
 # EJERCICIOS (for)
@@ -22,7 +75,7 @@ print("\nEjercicio 2:")
 suma = 0
 for x in numeros:
     suma += x
-media = suma/len(numeros)
+media = suma / len(numeros)
 print(f"La media es: {media}")
 
 # Ejercicio 3: Buscar el máximo de una lista
@@ -54,10 +107,19 @@ print(new_list)
 palabras = ["casa", "arbol", "sol", "elefante", "luna", "coche", "arbol"]
 # Pide al usuario que introduzca una letra.
 # Cuenta cuántas palabras en la lista empiezan con esa letra (sin diferenciar mayúsculas/minúsculas).
-print("\nEjercicio 5:")
-letra = input("Ingrese una letra: ")
-cuenta = 0
-for p in palabras:
-    if p[0].lower() == letra.lower():
-        cuenta += 1
-print(f"El numero de palabras con es letra al inicio es: {cuenta}")
+# print("\nEjercicio 5:")
+# letra = input("Ingrese una letra: ")
+# cuenta = 0
+# for p in palabras:
+#     if p[0].lower() == letra.lower():
+#         cuenta += 1
+# print(f"El numero de palabras con es letra al inicio es: {cuenta}")
+
+
+for x in range(3):
+    for j in range(3):
+        if x == j:
+            break
+        print(f"x: {x}, j: {j}")
+
+# pinta los numeros menores que la x actual

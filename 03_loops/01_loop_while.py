@@ -138,18 +138,27 @@ while numero <= 20:
 # Imprime todos los números primos menores o iguales que N usando un bucle while.
 print("\nEjercicio 6:")
 
-n = int(input("Ingrese un numero: "))
+# n = int(input("Ingrese un numero: "))
 
-numero = 2
-while numero <= n:
-  es_primo = True 
-  divisor = 2
-  while divisor * divisor <= numero: 
-    if numero % divisor == 0:
-      es_primo = False  
-      break  
-    divisor += 1
-  if es_primo:
-    print(numero)
+# numero = 2
+# while numero <= n:
+#   es_primo = True 
+#   divisor = 2
+#   while divisor * divisor <= numero: 
+#     if numero % divisor == 0:
+#       es_primo = False  
+#       break  
+#     divisor += 1
+#   if es_primo:
+#     print(numero)
 
-  numero += 1
+#   numero += 1
+
+numero = -1
+while numero < 0:
+    try:
+        numero = int(input("Ingrese un numero positivo: "))
+        if numero < 0:
+            print("Numero negativo")
+    except:
+        print("Caracter no valido, ingrese un numero valido")
