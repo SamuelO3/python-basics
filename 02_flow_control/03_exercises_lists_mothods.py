@@ -132,9 +132,20 @@ print("-------------------------------------------------------")
 # Crea una referencia a la lista original llamada referencia.
 # Modifica el primer elemento de la lista referencia a 10.
 # Imprime las cuatro listas (original, copia_1, copia_2, referencia) y observa los cambios.
+original = [1,2,3]
+copia_1 = original[::]
+copia_2 = copia_1.copy()
+referencia = original
+referencia[0] = 10
+print("original: ", original)
+print("copia 1: ", copia_1)
+print("copia 2: ", copia_2)
+print("referencia: ", referencia)
 print("-------------------------------------------------------")
+
 
 # Ejercicio 6: Ordenar strings sin diferenciar mayúsculas y minúsculas.
 # Crea una lista con las siguientes cadenas: ["Manzana", "pera", "BANANA", "naranja"].
 # Ordena la lista sin diferenciar entre mayúsculas y minúsculas.
-print("-------------------------------------------------------")
+lista_frutas = ["Manzana", "pera", "BANANA", "naranja"]
+print(sorted(lista_frutas))
