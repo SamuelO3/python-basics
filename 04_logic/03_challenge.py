@@ -8,69 +8,54 @@ objective = 8
 find_first_sum(nums, goal)  # [2, 3]
 """
 
-import operator
 import os
 
 os.system("cls")
 
 
 numeros = [4, 5, 6, 4, 2]
-objective = 8
+objective = 7
 
 
-def find_first_sum_list(numeros: list[int], objective: int) -> list[int]:
+def find_first_sum(nums: list[int], goal: int) -> list[int]:
     """
-    Encuantra los primeros numeros del array que sument un numero goal y devulve sus indices.
+    Encuentra dos numeros que sumados den un numero meta
 
     Args:
-        numeros (list[int]): arreglo de numeros donde buscaremos la pareja
-        goal (int): numero objetivo de la suma
+        nums(list[int]): arreglo de numeros para buscar la suma
+        goal(int): numero meta
 
-    Return:
-        [numero_1, numero_2] (list[int]):lista con indices de los numeros de la pareja
-        Si no existe una suma que de la meta retorna None
+    Returns:
+        tuple: tuple con el indice de los numeros que sumados dan la meta
     """
 
-    lenght = len(numeros)
+    progress: dict[int, int] = {}
 
-    for i in range(lenght):
-        for j in range(i + 1, lenght):
-            if numeros[i] + numeros[j] == objective:
-                return [i, j]
+    for i, n in enumerate(nums):
+        resto: int = goal - n
 
-    return None
+        if resto in progress:
+            return [progress[resto], i]
+        progress[n] = i  
+
+print(find_first_sum(numeros, objective))
 
 
-print("Con fors anidados", find_first_sum_list(numeros=numeros, objective=objective))
-
-
-def find_first_sum_dict(numeros: list[int], objective: int) -> list[int]:
+def find_first_sum_for(nums: list[int], goal: int) -> list[int]:
     """
-    Encuantra los primeros numeros del array que sument un numero goal y devulve sus indices.
+    Encuentra dos numeros que sumados den un numero meta
 
     Args:
-        numeros (list[int]): arreglo de numeros donde buscaremos la pareja
-        goal (int): numero objetivo de la suma
+        nums(list[int]): arreglo de numeros para buscar la suma
+        goal(int): numero meta
 
-    Return:
-        [numero_1, numero_2] (list[int]):lista con indices de los numeros de la pareja
-        Si no existe una suma que de la meta retorna None
+    Returns:
+        tuple: tuple con el indice de los numeros que sumados dan la meta
     """
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] + nums[j] == goal:
+                return[i, j]
+            
 
-    progress = {}
-
-    for index, num in enumerate(numeros):
-        if num in progress:
-            continue
-
-        dif = objective - num
-
-        if dif in progress:
-            return [progress[dif], index]
-
-        progress[num] = index
-
-    return None
-
-
-print("Con diccionario", find_first_sum_dict(numeros=numeros, objective=objective))
+print(find_first_sum_for(numeros, objective))
