@@ -39,16 +39,19 @@ import os
 
 os.system("cls")
 
-lista_a = [2, 4, 2]
-lista_b = [3, 3, 4]
+lista_a = [1, 2, 3]
+lista_b = [2, 5, 4]
 
-lista_a_2 = [4, 4, 4]
-lista_b_2 = [2, 8, 2]
+lista_a_2 = [2, 4, 2]
+lista_b_2 = [4, 2, 2]
+
+lista_a_3 = [5, 4, 3]
+lista_b_3 = [4, 4, 2]
 
 
 def battle(lista_a: list[int], lista_b: list[int]) -> str:
     """
-    Batalla de arreglos, recibe dos arreglos, velida la diferencia entre los numeros de cada arreglo y el numero final obtiene la diferencia entre los
+    Batalla de arreglos, recibe dos arreglos, valida la diferencia entre los numeros de cada arreglo y el numero final obtiene la diferencia entre los
     elementos de los arreglos
 
     Args:
@@ -59,76 +62,30 @@ def battle(lista_a: list[int], lista_b: list[int]) -> str:
         str, con la diferencia entre los ultimos elementos de cada arreglo y la letra del arreglo
 
     Ejemplo:
-        # - 2 vs 3: gana 3 (+1)
-        # - 4 vs 3+1: empate
-        # - 2 vs 4: gana 4 (+2)
-        # Resultado: "2b"
+        - 2 vs 3: gana 3 (+1)
+        - 4 vs 3+1: empate
+        - 2 vs 4: gana 4 (+2)
+        Resultado: "2b"
     """
-    if len(lista_a) != len(lista_b):
-        raise ValueError("las listas de batalla deben ser del mismo tamaño")
 
-    dif_a = 0
-    dif_b = 0
+    punto_a = 0
+    punto_b = 0
 
-    for i in range(len(lista_a)):
+    for i, n in enumerate(lista_a):
+        if n - lista_b[i] < 0:
+            punto_b = lista_b[i] - n
+        if n - lista_b[i] > 0:
+            punto_a = n - lista_b[i]
 
-        num_a = lista_a[i] + dif_a
-        num_b = lista_b[i] + dif_b
+    if punto_a > punto_b:
+        return f"{punto_a}a"
 
-        if num_a == num_b:
-            dif_a = 0
-            dif_b = 0
-            continue
-
-        if num_a > num_b:
-            dif_a = num_a - num_b
-            dif_b = 0
-            continue
-
-        if num_b > num_a:
-            dif_b = num_b - num_a
-            dif_a = 0
-            continue
-
-    if dif_a != 0:
-        return f"{dif_a}a"
-
-    if dif_b != 0:
-        return f"{dif_b}b"
+    if punto_b > punto_a:
+        return f"{punto_b}b"
 
     return "x"
 
 
 print(battle(lista_a=lista_a, lista_b=lista_b))
 print(battle(lista_a=lista_a_2, lista_b=lista_b_2))
-
-
-def battle_short(lista_a: list[int], lista_b: list[int]):
-    """
-    Batalla de arreglos, recibe dos arreglos, velida la diferencia entre los numeros de cada arreglo y el numero final obtiene la diferencia entre los
-    elementos de los arreglos
-
-    Args:
-        lista_a (list[int]): primera lista de batalla
-        lista_b (list[int]): segunda lista de batalla
-
-    Return:
-        str, con la diferencia entre los ultimos elementos de cada arreglo y la letra del arreglo
-
-    Ejemplo:
-        # - 2 vs 3: gana 3 (+1)
-        # - 4 vs 3+1: empate
-        # - 2 vs 4: gana 4 (+2)
-        # Resultado: "2b"
-    """
-    points_a = sum(lista_a)
-    points_b = sum(lista_b)
-
-    if points_a > points_b:
-        return f"{points_a-points_b}a"
-    if points_b > points_a:
-        return f"{points_b - points_a}b"
-    return "x"
-
-
-print(battle_short(lista_a=lista_a, lista_b=lista_b))
+print(battle(lista_a=lista_a_3, lista_b=lista_b_3))

@@ -37,6 +37,7 @@ def find_first_sum(nums: list[int], goal: int) -> list[int]:
         if resto in progress:
             return [progress[resto], i]
         progress[n] = i  
+    return None
 
 print(find_first_sum(numeros, objective))
 
@@ -57,5 +58,5 @@ def find_first_sum_for(nums: list[int], goal: int) -> list[int]:
             if nums[i] + nums[j] == goal:
                 return[i, j]
             
-
+    return None
 print(find_first_sum_for(numeros, objective))
