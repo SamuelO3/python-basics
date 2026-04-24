@@ -15,28 +15,26 @@ if system("clear") != 0:
     system("cls")
 
 
-def carnivore_egg_counter(egg_list: list[int]) -> int:
+def carnivore_egg_counter(egg_list: list[int]):
     """
-    Esta funcion recibe una lista de numeros enteros y calcula cuantos huevos hay en la lista
+    Calcula el numero de huevos carnivoros (pares)
 
     Args:
-        egg_list (list[int]): lista de numeros donde buscaremos
+        egg_list (list[int]): lista de huevos a calcular
 
-    Return:
-        total de pares en el arreglo, 0 si no hay pares
+    Returns:
+        suma de huevos carnivoros calculados (pares)
     """
 
-    egg_counter = 0
+    carnivore = 0
 
     for n in egg_list:
         if n % 2 == 0:
-            egg_counter += n
+            carnivore += abs(n)
 
-    egg_counter = sum(filter(lambda x: x % 2 == 0, egg_list))
+    return carnivore
 
-    return egg_counter
 
-print(carnivore_egg_counter(list(range(1, 11))))
-print(carnivore_egg_counter(list(range(1, 11, 2))))
-print(carnivore_egg_counter(list(range(-10, 0))))
-print(carnivore_egg_counter(list(range(-11, 0, 2))))
+print(carnivore_egg_counter(list(range(0, 5))))
+print(carnivore_egg_counter(list(range(1, 2))))
+print(carnivore_egg_counter(list(range(-2, 10))))

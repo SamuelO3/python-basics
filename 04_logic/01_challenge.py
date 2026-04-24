@@ -24,51 +24,35 @@ os.system("cls")
 sentence = "RRRRJJJjjjjrrr"
 
 
-def words_counter(sentence: str):
+def counter_r_j(sentence: str) -> bool:
     """
-    Esta funcion verifica cuantas (R,r) y (J,j) aparecen en un texto
-
+    La funcion valida estabilidad de la alianza de Mr. Fantastic y La Antorcha Humana
     Args:
-        sentence (str): texto a validar
-
-    Return:
-        True si la cantidad de ambas es igual, False si no
+        sentence (str): cadena de texto a validar
+    Returns:
+        bool: 
+            True si la alianza esta estable (numero de letras de ambos iguales)\n
+            False (bool): si la alianza es inestable (numero de letras desigual)
     """
-    r_count = 0
-    j_count = 0
+    count_r = 0
+    count_j = 0
+    for l in sentence:
+        if l.lower() == "r":
+            count_r += 1
+        elif l.lower() == "j":
+            count_j += 1
 
-    for w in sentence:
-        if w.upper() == "R":
-            r_count += 1
-            continue
-        if w.upper() == "J":
-            j_count += 1
+    # if count_j == count_r:
+    #     return True
+    # elif (count_r > count_j) or (count_r < count_j):
+    #     return False
+    
+    # if (count_r == 0) and (count_j == 0):
+    #     return True
+    return count_j == count_r
+    
 
-    return r_count == j_count
-
-
-print(words_counter(sentence))
-print(words_counter("RrJj"))
-print(words_counter("RRrJ"))
-print(words_counter("RrJJJ"))
-print(words_counter("ABSCD"))
-
-
-haystack = "otomatetomas"
-needle = "tomas"
-
-
-def strStr(haystack: str, needle: str):
-    """
-    :type haystack: str
-    :type needle: str
-    :rtype: int
-    """
-    count = haystack.count(f"{needle}")
-    if count > 0:
-        index = haystack.index(f"{needle}")
-        return count, index
-    return False
-
-
-print(strStr(haystack=haystack, needle=needle))
+if counter_r_j(sentence) is True:
+    print("La alianza es estable")
+else:
+    print("La alianza es inestable")
